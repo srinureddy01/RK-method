@@ -1,0 +1,611 @@
+   #include <stdio.h>
+void main(){
+    int x,y,i,n;
+    float k1,k2,k3,k4,k20,k21,k30,k31,k40,k41;
+    static int  count1,count2,count11,count22,
+     count3,count33,srinu,srinu01;
+  static int srinu02,srinu03,srinu04,sri02,sri03,sri04;
+     float h[4],x0,y0,x1,x2,x3,y1,y2;
+  char numx[4],numy[4];
+     int  intake,enqr;
+  printf("In this  Runge–Kutta method-RK method the program doesnot  supportsto the constants it only supports the varbiles like oprations on x&y only but you can give the h value up to the limit only like the maximum h value is 2 only \n perss  1 to continue\n perss 2 to Enquriy \n perss 3 to exit  ");
+  scanf("%d",&intake);
+  switch(intake){
+    in :printf("Here you go!");  
+    case 1 : goto program;
+              break;
+    case 2: printf("Dont you know about RK  method\n --perss 1 Enqury about why not constants in the current program\n -- press 2  equation of varibles\n--press 3  Formulas of RK method  \n");
+    scanf("%d",&enqr);
+    switch(enqr){
+          case 1:printf("Go to this like you find good \n https://en.wikipedia.org/wiki/List_of_mathematical_ ");
+          break;
+          case 2:printf("go to this link : \nhttps://byjus.com/maths/variable/");
+            goto exit;
+          break;
+          case 3: printf("for y1: y1=y0+0.1666*(k1+2*(k2)+2*(k3)+k4)\n for y2: y2=y1+0.1666*(k1+2*(k2)+2*(k3)+k4)");
+            goto in ;
+            break ;
+      befault: srinu01++;
+      printf("Enter only given instructions only!");
+      if(srinu01==3){
+        break;
+      }
+      else{
+        goto in;
+      }
+    }
+    case 3: goto exit;
+    
+  }
+   
+     program:printf("\nHere we go!\n ");
+     
+     
+    printf("Enter the char for the value of x= ");
+    scanf("%s",numx);
+    printf("Enter the char for the value of y= ");
+    scanf("%s",numy);
+    printf("Enter the value of x0= ");
+    scanf("%f",&x0);
+    printf("Enter the value of y0= ");
+    scanf("%f",&y0);
+    printf("----------------------------------------\n");
+    printf("how many values of h values: ");
+    scanf("%d",&n);
+    for(i=0;i<n;i++){
+        printf("Enter h= ");
+        scanf("%f",&h[i]);
+    }
+    
+    // finging  the x0,x1,x2 values
+  printf("-----------------------------");
+      x1=x0+h[0]; 
+      x2=x1+h[0];
+      x3=x2+h[0];
+      printf("\n x1= %f \n x2=%.4f \n x3=%.4f\n",x1,x2,x3);
+  printf("----------------------------");
+    
+    // heare i am doing the knouing the how many values the use had entered form  the key bord//
+  
+    /* fro x be like x*y*/
+    for(i=0; numx[i]=='x'&& numx[i+1]=='y'||numx[i+2]=='y';i++ ){
+        count1++;
+        break;
+    }
+    /*fro x like x*x */
+    for(i=0; numx[i]=='x'&& numx[i+2]=='x'||numx[i+3]=='x';i++){
+        count2++;
+        break;
+    }
+    // fro x like x//
+    for(i=0;numx[i]=='x'&&numx[i+1]=='\0';i++){
+        count3++;
+        break;
+    }
+  // for x be like -x
+  i=0;
+  while(numx[i]=='-' && numx[i+1]=='x'){
+    srinu02++;
+    break;
+  }
+  //  for x be like -x*y
+  i=0;
+  while( numx[i]=='-'&& numx[i+1]=='x'&&numx[i+2]=='y'||numx[i+3]=='y'){
+    srinu03++;
+    break;
+  }
+  // for x be like -x*y
+  i=0;
+  while(numx[i]=='-'&&numx[i+1]=='x'&&numx[i+2]=='y'||numx[i+3]=='y'){
+    srinu04++;
+    break;
+  }
+    // y started from here
+    
+     // fro y like x*y
+     for(i=0; numy[i]=='x'&& numy[i+1]=='y'||numy[i+2]=='y' ;i++ ){
+        count11++;
+        break;
+    }
+    // fro y like y*y
+    for(i=0; numy[i]=='y'&& numy[i+2]=='y'||numy[i+3]=='y';i++){
+        count22++;
+        break;
+    }
+    //for y like y 
+    for(i=0;numy[i]=='y' && numy[i+1]=='\0';i++){
+        count33++;
+        break;
+    }
+  // fro y should be -y
+  for(i=0;numy[i]=='-'&& numy[i+1]=='y'&&numy[i+2]=='\0';i++){
+    srinu++;
+    break;
+  }
+  // fro y should be -y*y
+  i=0;
+  while(numy[i]=='-'&& numy[i+1]=='y'&& numy[i+2]=='y'||numy[i+3]=='y'){
+    sri02++;
+    break;
+  }
+   
+  // for y should be -x*y
+  i=0;
+  while(numy[i]=='-'&&numy[i+1]=='x'&&numy[i+2]=='y'||numy[i+3]=='y'){
+    sri03++;
+    break;
+  }
+  // 
+    // 001 quction is like xy+xy
+    if(count1==1 && count11==1){
+        k1=h[0]*(x0*y0 + x0*y0);
+        // fro k2;
+            k20=x0+h[0]/2;
+          k21=y0+k1/2;
+          
+          k2=h[0]*(k20*k21+k21*k20);
+          // for k3
+          k30=x0+h[0]/2;
+          k31=y0+k2/2;
+          k3=h[0]*(k30*k31+k31*k30);
+          // fro k4
+           k40=x0+h[0];
+              k41=y0+k3;
+              k4=h[0]*(k40*k41+k40*k41);
+        
+          
+    }
+    //002 the quction is like xy+y
+    else if(count1==1 && count33==1){
+         k1=h[0]*(x0*y0 + y0);
+        // fro k2;
+            k20=x0+h[0]/2;
+          k21=y0+k1/2;
+          
+          k2=h[0]*(k20*k21+k21);
+          // for k3
+          k30=x0+h[0]/2;
+          k31=y0+k2/2;
+          k3=h[0]*(k30*k31+k31);
+          // fro k4
+           k40=x0+h[0];
+              k41=y0+k3;
+              k4=h[0]*(k40*k41+k41);
+        
+    }
+    // 003 if the quction is x+xy
+    else if(count3==1 && count11==1){
+          k1=h[0]*(x0+y0*x0);
+          // for k2
+          k20=x0+h[0]/2;
+          k21=y0+k1/2;
+          k2=h[0]*(k20+k20*k21);
+          // for k3
+          k30=x0+h[0]/2;
+          k31=y0+k2/2;
+          k3=h[0]*(k30+k30*k31);
+          // for k4
+          k40=x0+h[0];
+          k41=y0+k3;
+          k4=h[0]*(k40+k40*k41);
+    }
+    //004 for the quction is like x+ or - y
+    else if(count3==1 && count33==1){
+          k1=h[0]*(x0+y0);
+          // for k2
+          k20=x0+h[0]/2;
+          k21=y0+k1/2;
+          k2=h[0]*(k20+k21);
+          // for k3
+          k30=x0+h[0]/2;
+          k31=y0+k2/2;
+          k3=h[0]*(k30+k31);
+          // for k4
+          k40=x0+h[0];
+          k41=y0+k3;
+          k4=h[0]*(k40+k41);
+    }
+    //005 if the problem is x+y*y;
+    else if(count3==1 && count22==1){
+          k1=h[0]*(x0+y0*y0);
+          // for k2
+          k20=x0+h[0]/2;
+          k21=y0+k1/2;
+          k2=h[0]*(k20+k20*k21);
+          // for k3
+          k30=x0+h[0]/2;
+          k31=y0+k2/2;
+          k3=h[0]*(k30+k30*k31);
+          // for k4
+          k40=x0+h[0];
+          k41=y0+k3;
+          k4=h[0]*(k40+k40*k41);
+    }
+    // 006 if the problem is x*x + y
+    else if(count2==1 && count33==1 ){
+          k1=h[0]*(x0*x0+y0);
+          // for k2
+          k20=x0+h[0]/2;
+          k21=y0+k1/2;
+          k2=h[0]*(k20*k20+k21);
+          // for k3
+          k30=x0+h[0]/2;
+          k31=y0+k2/2;
+          k3=h[0]*(k30*k30+k31);
+          // for k4
+          k40=x0+h[0];
+          k41=y0+k3;
+          k4=h[0]*(k40*k40+k41);
+            }
+  
+            //007 if the quction  is x*x + y*y
+      else if(count2==1 && count22==1){
+          k1=h[0]*(x0*x0+y0*y0);
+          // for k2
+          k20=x0+h[0]/2;
+          k21=y0+k1/2;
+          k2=h[0]*(k20*k20+k21*k21);
+          // for k3
+          k30=x0+h[0]/2;
+          k31=y0+k2/2;
+          k3=h[0]*(k30*k30+k31*k31);
+          // for k4
+          k40=x0+h[0];
+          k41=y0+k3;
+          k4=h[0]*(k40*k40+k41*k41);
+           
+            }
+          //008 if the quction is like x*x-y
+  else if(count2==1 && srinu==1){
+            k1=h[0]*(x0*x0-y0);
+          // for k2
+          k20=x0+h[0]/2;
+          k21=y0+k1/2;
+          k2=h[0]*(k20*k20-k21);
+          // for k3
+          k30=x0+h[0]/2;
+          k31=y0+k2/2;
+          k3=h[0]*(k30*k30-k31);
+          // for k4
+          k40=x0+h[0];
+          k41=y0+k3;
+          k4=h[0]*(k40*k40-k41);
+  }
+  // like x*y+y*y
+  else if(count1==1&& count22==1){
+        k1=h[0]*(x0*y0 + y0*y0);
+        // fro k2;
+            k20=x0+h[0]/2;
+          k21=y0+k1/2;
+          
+          k2=h[0]*(k20*k21+k21*k21);
+          // for k3
+          k30=x0+h[0]/2;
+          k31=y0+k2/2;
+          k3=h[0]*(k30*k31+k31*k31);
+          // fro k4
+           k40=x0+h[0];
+              k41=y0+k3;
+              k4=h[0]*(k40*k41+k41*k41);
+  }
+  // like -x*y-y*y
+  else if(srinu04==1&&sri02==1){
+    k1=h[0]*(-x0*y0 - y0*y0);
+        // fro k2;
+            k20=x0+h[0]/2;
+          k21=y0+k1/2;
+          
+          k2=h[0]*(-k20*k21-k21*k21);
+          // for k3
+          k30=x0+h[0]/2;
+          k31=y0+k2/2;
+          k3=h[0]*(-k30*k31-k31*k31);
+          // fro k4
+           k40=x0+h[0];
+              k41=y0+k3;
+              k4=h[0]*(-k40*k41-k41*k41);
+  }
+    // x*y+x*y
+  else if(count1==1&&count11==1){//here
+    k1=h[0]*(x0*y0 + x0*y0);
+        // fro k2;
+            k20=x0+h[0]/2;
+          k21=y0+k1/2;
+          
+          k2=h[0]*(k20*k21+k20*k21);
+          // for k3
+          k30=x0+h[0]/2;
+          k31=y0+k2/2;
+          k3=h[0]*(k30*k31+k30*k31);
+          // fro k4
+           k40=x0+h[0];
+              k41=y0+k3;
+              k4=h[0]*(k40*k41+k40*k41);
+  }
+  // like -x*y-x*y
+  if(srinu04==1&&sri03==1){
+    k1=h[0]*(-x0*y0 - x0*y0);
+        // fro k2;
+            k20=x0+h[0]/2;
+          k21=y0+k1/2;
+          
+          k2=h[0]*(-k20*k21-k20*k21);
+          // for k3
+          k30=x0+h[0]/2;
+          k31=y0+k2/2;
+          k3=h[0]*(-k30*k31-k30*k31);
+          // fro k4
+           k40=x0+h[0];
+              k41=y0+k3;
+              k4=h[0]*(-k40*k41-k40*k41);
+  }
+   
+  
+  y1=y0+0.1666*(k1+2*(k2)+2*(k3)+k4);
+             
+      
+     printf("\n----------------------------------------\n");
+     //printf("\nx0=%f\n x1=%f\n x2=%f x3=%f",x0,x1,x2,x3);
+     /*printf("\nk1=%f\nk2=%f\nk3=%f\nk4=%f\n"k1,k2,k3,k4);
+     printf("The finel y1 value is...");
+     printf("y1(%f)=%f",h[0],y1);*/
+     printf("\n k1=%f",k1);
+     printf("\n k2=%f",k2);
+     printf("\n k3=%f",k3);
+     printf("\n k4=%f",k4);
+     printf("\n y1=%f",y1);
+ // these are the values from the y2 side//
+      if(n==2){
+         // 0001 quction is like xy+xy
+        if(count1==1 && count11==1){
+        k1=h[1]*(x1*y1+x1*y1);
+        // fro k2;
+            k20=x1+h[1]/2;
+          k21=y1+k1/2;
+          
+          k2=h[1]*(k20*k21+k21*k20);
+          // for k3
+          k30=x1+h[1]/2;
+          k31=y1+k2/2;
+          k3=h[0]*(k30*k31+k31*k30);
+          // fro k4
+           k40=x1+h[1];
+              k41=y1+k3;
+              k4=h[0]*(k40*k41+k40*k41);
+        
+          
+    }
+      //0002 the quction is like xy+y
+    else if(count1==1 && count33==1){
+         k1=h[1]*(x1*y1 + y1);
+        // fro k2;
+            k20=x1+h[1]/2;
+          k21=y1+k1/2;
+          
+          k2=h[1]*(k20*k21+k21);
+          // for k3
+          k30=x1+h[1]/2;
+          k31=y1+k2/2;
+          k3=h[1]*(k30*k31+k31);
+          // fro k4
+           k40=x1+h[1];
+              k41=y1+k3;
+              k4=h[0]*(k40*k41+k41);
+        
+    }
+    // 0003 if the quction is x+xy
+    else if(count3==1 && count11==1){
+          k1=h[1]*(x1+y1*x1);
+          // for k2
+          k20=x1+h[1]/2;
+          k21=y1+k1/2;
+          k2=h[1]*(k20+k20*k21);
+          // for k3
+          k30=x1+h[1]/2;
+          k31=y1+k2/2;
+          k3=h[1]*(k30+k30*k31);
+          // for k4
+          k40=x1+h[1];
+          k41=y1+k3;
+          k4=h[1]*(k40+k40*k41);
+    }
+    //0004 for the quction is like x+ or - y
+    else if(count3==1 && count33==1){
+          k1=h[1]*(x1+y1);
+          // for k2
+          k20=x1+h[1]/2;
+          k21=y1+k1/2;
+          k2=h[1]*(k20+k21);
+          // for k3
+          k30=x1+h[1]/2;
+          k31=y1+k2/2;
+          k3=h[1]*(k30+k31);
+          // for k4
+          k40=x1+h[1];
+          k41=y1+k3;
+          k4=h[0]*(k40+k41);
+    }
+    //0005 if the problem is x+y*y;
+    else if(count3==1 && count22==1){
+          k1=h[1]*(x1+y1*y1);
+          // for k2
+          k20=x1+h[1]/2;
+          k21=y1+k1/2;
+          k2=h[1]*(k20+k20*k21);
+          // for k3
+          k30=x1+h[1]/2;
+          k31=y1+k2/2;
+          k3=h[1]*(k30+k30*k31);
+          // for k4
+          k40=x1+h[1];
+          k41=y1+k3;
+          k4=h[1]*(k40+k40*k41);
+    }
+    // 0006 if the problem is x*x + y
+    else if(count2==1 && count33==1 ){
+          k1=h[1]*(x1*x1+y1);
+          // for k2
+          k20=x1+h[1]/2;
+          k21=y1+k1/2;
+          k2=h[1]*(k20*k20+k21);
+          // for k3
+          k30=x1+h[1]/2;
+          k31=y1+k2/2;
+          k3=h[1]*(k30*k30+k31);
+          // for k4
+          k40=x1+h[1];
+          k41=y1+k3;
+          k4=h[1]*(k40*k40+k41);
+            }
+  
+            //0007 if the quction  is x*x + y*y
+      else if(count2==1 && count22==1){
+          k1=h[1]*(x1*x1+y1*y1);
+          // for k2
+          k20=x1+h[1]/2;
+          k21=y1+k1/2;
+          k2=h[1]*(k20*k20+k21*k21);
+          // for k3
+          k30=x1+h[1]/2;
+          k31=y1+k2/2;
+          k3=h[1]*(k30*k30+k31*k31);
+          // for k4
+          k40=x1+h[1];
+          k41=y1+k3;
+          k4=h[1]*(k40*k40+k41*k41);
+           
+            }
+          //0008 if the quction is like x*x-y
+  else if(count2==1 && srinu==1){
+            k1=h[1]*(x1*x1-y1);
+          // for k2
+          k20=x1+h[1]/2;
+          k21=y1+k1/2;
+          k2=h[1]*(k20*k20-k21);
+          // for k3
+          k30=x1+h[1]/2;
+          k31=y1+k2/2;
+          k3=h[1]*(k30*k30-k31);
+          // for k4
+          k40=x1+h[1];
+          k41=y1+k3;
+          k4=h[1]*(k40*k40-k41);
+  }
+         y2=y1+0.1666*(k1+2*(k2)+2*(k3)+k4);
+         // 08 like -x-y//  
+   if(srinu02==1&&srinu==1){
+           k1=h[1]*(-x1-y1);
+          // for k2
+          k20=x1+h[1]/2;
+          k21=y1+k1/2;
+          k2=h[1]*(-k20-k21);
+          // for k3
+          k30=x1+h[1]/2;
+          k31=y1+k2/2;
+          k3=h[1]*(-k30-k31);
+          // for k4
+          k40=x1+h[1];
+          k41=y1+k3;
+          k4=h[0]*(-k40-k41);
+    
+  }// like -x-y*y
+  else if(srinu02==1 && sri02==1){
+           k1=h[1]*(-x1-y1*y1);
+          // for k2
+          k20=x1+h[1]/2;
+          k21=y1+k1/2;
+          k2=h[1]*(-k20-k20*k21);
+          // for k3
+          k30=x1+h[1]/2;
+          k31=y1+k2/2;
+          k3=h[1]*(-k30-k30*k31);
+          // for k4
+          k40=x1+h[1];
+          k41=y1+k3;
+          k4=h[1]*(-k40-k40*k41);
+  }
+    // like -x-x*y
+  else if(srinu02==1&& sri03==1){
+         k1=h[1]*(-x1-y1*x1);
+          // for k2
+          k20=x1+h[1]/2;
+          k21=y1+k1/2;
+          k2=h[1]*(-k20-k20*k21);
+          // for k3
+          k30=x1+h[1]/2;
+          k31=y1+k2/2;
+          k3=h[1]*(-k30-k30*k31);
+          // for k4
+          k40=x1+h[1];
+          k41=y1+k3;
+          k4=h[1]*(-k40-k40*k41);
+  }
+  // like -x*x-y
+  else if(srinu03==1 && srinu==1){
+          k1=h[1]*(-x1*x1-y1);
+          // for k2
+          k20=x1+h[1]/2;
+          k21=y1+k1/2;
+          k2=h[1]*(-k20*k20-k21);
+          // for k3
+          k30=x1+h[1]/2;
+          k31=y1+k2/2;
+          k3=h[1]*(-k30*k30-k31);
+          // for k4
+          k40=x1+h[1];
+          k41=y1+k3;
+          k4=h[1]*(-k40*k40-k41);
+  }
+  // like -x*x-y*y
+  else if(srinu03==1 && sri02==1){
+          k1=h[1]*(-x1*x1-y1*y1);
+          // for k2
+          k20=x1+h[1]/2;
+          k21=y1+k1/2;
+          k2=h[1]*(-k20*k20-k21*k21);
+          // for k3
+          k30=x1+h[1]/2;
+          k31=y1+k2/2;
+          k3=h[1]*(-k30*k30-k31*k31);
+          // for k4
+          k40=x1+h[1];
+          k41=y1+k3;
+          k4=h[1]*(-k40*k40-k41*k41);
+  }
+  // -x*y-y
+  else if(srinu04==1 && srinu==1){
+     k1=h[1]*(-x1*y1 - y1);
+        // fro k2;
+            k20=x1+h[1]/2;
+          k21=y1+k1/2;
+          
+          k2=h[1]*(-k20*k21-k21);
+          // for k3
+          k30=x1+h[1]/2;
+          k31=y1+k2/2;
+          k3=h[1]*(-k30*k31-k31);
+          // fro k4
+           k40=x1+h[1];
+              k41=y1+k3;
+              k4=h[0]*(-k40*k41-k41);
+  }
+  // -x*y-y*y
+  else if(srinu04==1 && sri02==1){
+    
+  }
+      
+     printf("\n----------------------------------------\n");
+      
+     printf("\n k1=%f",k1);
+     printf("\n k2=%f",k2);
+     printf("\n k3=%f",k3);
+     printf("\n k4=%f",k4);
+     printf("\n y2=%f",y1);
+     
+        
+       // end of the 000 block  
+      }
+goto next;
+exit:printf("\nProgram end!! ");
+  next:printf(" ");
+}

@@ -1,0 +1,5 @@
+23/02/22
+we have to change the x and y values 
+these x and y values has to change becouse when the logic is correct on (-)then only the value of x and y is 
+obtaining other wise there is no chane in the x and y values 
+then ottomatically the x and y has the garbage values on it then we are getting the incorrect values.
